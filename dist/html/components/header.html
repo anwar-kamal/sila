@@ -1,0 +1,22 @@
+
+<header class="bg-white">
+  <div class="container cent_bet py-4"><img class="max-w-[132px] " src="/dist/assets/logo.svg" alt=""/>
+    <nav class="cent maxlg:hidden xl:gap-6 gap-4 "><a class="nav_link nav_link_dash" href="">الرئيسية</a><a class="nav_link nav_link_dash" href=""> الدورات التدريبية</a><a class="nav_link nav_link_dash" href="">آخر العروض</a><a class="nav_link nav_link_dash" href=""> اختبار تحديد المستوى</a><a class="nav_link nav_link_dash" href="">تواصل معنا</a></nav>
+    <div class="cent gap-3 xl:gap-6">
+      <button class="shrink-0"><img src="/dist/assets/cart.svg" alt="cart icon"/></button><img class="h-12" src="/dist/assets/line.svg" alt=" line"/>
+      <button class="btn_primary maxlg:hidden">تسجيل الدخول</button>
+      <button class="shrink-0 lg:hidden" @click=" sideBar = true"> <img class="ltr:scale-x-[-1] transform" src="/dist/assets/toggle.svg" alt=""/></button>
+    </div>
+  </div>
+</header>
+<div class="fixed bg-black bg-opacity-85 drop-shadow-md inset-0 z-50 hidden backdrop-blur-[2px]" x-show="sideBar" :class="sideBar?'!block':''">
+  <div class="bg-white h-full w-72 sm:w-4/5 sm:max-w-96 p-4 divide-y-[24px] divide-transparent" x-show="sideBar" x-transition:enter=" transform ease-in duration-200" x-transition:enter-start=" rtl:translate-x-[288px] ltr:-translate-x-[288px] ">
+    <div class="cent_bet"> <img class=" max-w-28 " src="/dist/assets/logo.svg" alt=""/>
+      <button class="cent group p-2.5 hover:bg-primary hover:bg-opacity-10 rounded-lg  duration-300" @click=" sideBar = false"> <img class=" w-4   " src="/dist/assets/xx.svg" alt=""/></button>
+    </div>
+    <div class="cent">
+      <button class="btn_primary">تسجيل الدخول</button>
+    </div>
+    <nav class="flex flex-col gap-6  "><a class="nav_link nav_link_dash" href="">الرئيسية</a><a class="nav_link nav_link_dash" href=""> الدورات التدريبية</a><a class="nav_link nav_link_dash" href="">آخر العروض</a><a class="nav_link nav_link_dash" href=""> اختبار تحديد المستوى</a><a class="nav_link nav_link_dash" href="">تواصل معنا</a></nav>
+  </div>
+</div>

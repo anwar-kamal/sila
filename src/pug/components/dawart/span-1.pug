@@ -1,0 +1,15 @@
+- var items = [{ text: "المستوى: عام", imageSrc: "/dist/assets/level-task.svg" },{ text: "90 ساعة شرح", imageSrc: "/dist/assets/time-task.svg" },{ text: "الفئة المستهدفة لكل من يرغب في تطوير مهارات اللغة المتقدمة للأعمال", imageSrc: "/dist/assets/listen-task.svg" },{ text: "متاح ل 6 شهور", imageSrc: "/dist/assets/period-task.svg" },{ text: "متاح لاى جهاز", imageSrc: "/dist/assets/any-device.svg" },{ text: "شهادة معتمدة", imageSrc: "/dist/assets/liecience.svg" },]
+
+.bg-gray-50.border.border-neutral-200.grid.gap-6.p-4.content-start.self-start.sticky.top-8(class='rounded-[32px]')
+		.text-neutral-900.text-2xl.font-bold.capitalize 2950.00 ر.س
+		button.btn_primary اشتري الآن
+		.grid.grid-cols-2.gap-4
+			button.btn_sec  اضف الي السلة
+			button.btn_sec تواصل معنا
+		div(class="h-0.5 bg-neutral-200")
+		.text-right.text-neutral-900.text-lg.font-semibold.capitalize(class="leading-[18px]") مميزات الدورة
+		ul.grid.gap-4
+			each item in items
+				.flex.items-center.gap-3
+					img(src=item.imageSrc alt="" class="size-8")
+					div(class="text-right text-neutral-900 text-base font-normal ")= item.text

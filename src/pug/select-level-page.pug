@@ -1,0 +1,45 @@
+include ./mixins/page-nav-panner.pug 
+
+doctype html
+html(lang="ar" dir="rtl" x-data="{ lang: localStorage.getItem('lang') || 'ar', dir: localStorage.getItem('dir') || 'rtl', toggleDirLang() { this.lang = this.lang === 'en' ? 'ar' : 'en'; this.dir = this.dir === 'ltr' ? 'rtl' : 'ltr'; this.updateAttributes(); window.location.reload(); }, setToLTR() { this.lang = 'en'; this.dir = 'ltr'; this.updateAttributes(); window.location.reload(); }, setToRTL() { this.lang = 'ar'; this.dir = 'rtl'; this.updateAttributes(); window.location.reload(); }, updateAttributes() { localStorage.setItem('dir', this.dir); localStorage.setItem('lang', this.lang); document.documentElement.dir = this.dir; document.documentElement.lang = this.lang; }}", x-init="()=> { document.documentElement.lang = lang; document.documentElement.dir = dir; }")
+	include ./components/head
+	body( x-data="{sideBar:false}")
+		include ./components/header
+		+page-nav-panner('اختبار تحديد المستوى')
+		main.container.grid.gap-16.py-24(class="lg:grid-cols-2")
+			div(class=" max-w-2xl mx-auto cent")
+				img(src="/dist/assets/select-level.png", alt="" class="w-full")
+			.cent
+				.bg-gray-50.border.border-neutral-200.grid.gap-x-4.gap-y-8.p-4.py-8.w-full(class=' rounded-[32px] max-w-2xl mx-auto md:grid-cols-2')
+					.flex.flex-col.gap-2
+						label(for="name") الاسم*
+						input(type="text", name="" placeholder=" الاسم ")
+
+					.flex.flex-col.gap-2
+						label(for="name") الدولة 
+						select(name="")
+							option(value="" selected disabled  class="!opacity-50") أختار
+							option(value="") SAR 
+							option(value="") EGY
+
+					.flex.flex-col.gap-2
+						label(for="tel") اسم المستخدم
+						input(type="text", name="" placeholder="اسم المستخدم")
+
+					.flex.flex-col.gap-2
+						label(for="name") البريد الالكترونى*
+						input(type="email", name="" placeholder=" البريد الالكترونى")
+
+					.flex.flex-col.gap-2
+						label(for="message") كلمة المرور
+						input(type="password", name="" placeholder="كلمة المرور")
+
+					.flex.flex-col.gap-2
+						label(for="message") إعادة كلمة المرور
+						input(type="password", name="" placeholder=" إعادة كلمة المرور") 
+
+					div
+					button.btn_primary سجل الآن لتبدا الأختبار
+
+		include ./components/footer
+		include ./components/scripts

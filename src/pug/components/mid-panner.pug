@@ -1,0 +1,14 @@
+section.bg-sec
+	div.grid.gap-8(class="lg:grid-cols-5 ")
+		.mask.overflow-clip(class="maxlg:hidden lg:col-span-3 h-full")
+			img(src="/dist/assets/sila-mid-panner.webp", alt="" class=" h-full ")
+		.flex.flex-col.justify-center.gap-4.items-center.py-8.px-4(class="lg:col-span-2 ")
+			h1(class=" text-2xl md:text-3xl lg:text-4xl  font-extrabold text-white leading-10  lg:leading-[65px] text_shadow text-center") تحقق من مستواك في اللغة الانجليزية  
+				span.text-primary مجانا
+			.text-primary.font-semibold(class="xl:mt-8 w-2/3 mx-auto  lg:text-2xl md:text-xl text-lg text-center") ادخل البيانات واكمل الاختبار المجانى
+			form.grid.gap-4(action="submit" class="md:w-2/3 mx-auto")
+				input#yourName(type="text", name="" placeholder=" الاسم بالكامل")
+				input#yoyrEmail(type="email", name="" placeholder=" البريد الالكترونى")
+				input#yourNumber(type="tel", name="" placeholder="رقم الجوال " dir="rtl")
+				.cent
+					button.btn_primary أبدا الاختبار المجانى

@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" x-data="{ lang: localStorage.getItem('lang') || 'ar', dir: localStorage.getItem('dir') || 'rtl', toggleDirLang() { this.lang = this.lang === 'en' ? 'ar' : 'en'; this.dir = this.dir === 'ltr' ? 'rtl' : 'ltr'; this.updateAttributes(); window.location.reload(); }, setToLTR() { this.lang = 'en'; this.dir = 'ltr'; this.updateAttributes(); window.location.reload(); }, setToRTL() { this.lang = 'ar'; this.dir = 'rtl'; this.updateAttributes(); window.location.reload(); }, updateAttributes() { localStorage.setItem('dir', this.dir); localStorage.setItem('lang', this.lang); document.documentElement.dir = this.dir; document.documentElement.lang = this.lang; }}" x-init="()=&gt; { document.documentElement.lang = lang; document.documentElement.dir = dir; }">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link href="../css/output.css" rel="stylesheet">
+    <link href="../assets/logo.png" rel="icon">
+    <title>SilaVision</title>
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  </head>
+  <body x-data="{sideBar:false}">
+    <header class="bg-white">
+      <div class="container cent_bet py-4"><img class="max-w-[132px] " src="/dist/assets/logo.svg" alt="">
+        <nav class="cent maxlg:hidden xl:gap-6 gap-4 "><a class="nav_link nav_link_dash" href="">الرئيسية</a><a class="nav_link nav_link_dash" href=""> الدورات التدريبية</a><a class="nav_link nav_link_dash" href="">آخر العروض</a><a class="nav_link nav_link_dash" href=""> اختبار تحديد المستوى</a><a class="nav_link nav_link_dash" href="">تواصل معنا</a></nav>
+        <div class="cent gap-3 xl:gap-6">
+          <button class="shrink-0"><img src="/dist/assets/cart.svg" alt="cart icon"></button><img class="h-12" src="/dist/assets/line.svg" alt=" line">
+          <button class="btn_primary maxlg:hidden">تسجيل الدخول</button>
+          <button class="shrink-0 lg:hidden" @click=" sideBar = true"> <img class="ltr:scale-x-[-1] transform" src="/dist/assets/toggle.svg" alt=""></button>
+        </div>
+      </div>
+    </header>
+    <div class="fixed bg-black bg-opacity-85 drop-shadow-md inset-0 z-50 hidden backdrop-blur-[2px]" x-show="sideBar" :class="sideBar?'!block':''">
+      <div class="bg-white h-full w-72 sm:w-4/5 sm:max-w-96 p-4 divide-y-[24px] divide-transparent" x-show="sideBar" x-transition:enter=" transform ease-in duration-200" x-transition:enter-start=" rtl:translate-x-[288px] ltr:-translate-x-[288px] ">
+        <div class="cent_bet"> <img class=" max-w-28 " src="/dist/assets/logo.svg" alt="">
+          <button class="cent group p-2.5 hover:bg-primary hover:bg-opacity-10 rounded-lg  duration-300" @click=" sideBar = false"> <img class=" w-4   " src="/dist/assets/xx.svg" alt=""></button>
+        </div>
+        <div class="cent">
+          <button class="btn_primary">تسجيل الدخول</button>
+        </div>
+        <nav class="flex flex-col gap-6  "><a class="nav_link nav_link_dash" href="">الرئيسية</a><a class="nav_link nav_link_dash" href=""> الدورات التدريبية</a><a class="nav_link nav_link_dash" href="">آخر العروض</a><a class="nav_link nav_link_dash" href=""> اختبار تحديد المستوى</a><a class="nav_link nav_link_dash" href="">تواصل معنا</a></nav>
+      </div>
+    </div>
+    <main class="bg-sec pt-16 pb-20 mb-40">
+      <div class="container">
+        <div class="grid gap-16 mb-8 lg:grid-cols-2">
+          <div class="flex flex-col justify-center gap-8">
+            <h1 class="text-4xl md:text-6xl lg:text-7xl  leading-none font-extrabold text-white  maxlg:text-center lg:leading-[90px] text_shadow">تعلم الانجليزية</h1>
+            <h3 class="lg:text-4xl  leading-none font-semibold text-primary lg:leading-[60px] maxlg:text-center text-xl md:text-2xl">بطريقه فعاله فى أى وقت وأى مكان </h3>
+            <div class="cent">
+              <button class="btn_primary md:w-2/5">حدد مستواك الأن</button>
+            </div>
+          </div><img class="maxlg:order-first" src="/dist/assets/hero-silavision.webp" alt="">
+        </div>
+        <div class="-mb-48 px-4">
+          <div class="swiper option_swiper">
+            <div class="swiper-wrapper py-10">
+              <div class="swiper-slide  bg-white rounded-3xl   border border-gray-100    !grid justify-items-center gap-3 p-3" style="box-shadow: 0px 2px 25px 0px rgba(43, 109, 245, 0.10);"><img class="size-20" src="/dist/assets/level.svg" alt="">
+                <p class="text-center text-neutral-900 text-base font-medium  capitalize leading-normal ">اختبر مستواك فى اللغة الانجليزية </p>
+              </div>
+              <div class="swiper-slide  bg-white rounded-3xl  border  border-gray-100    !grid justify-items-center gap-3 p-3" style="box-shadow: 0px 2px 25px 0px rgba(43, 109, 245, 0.10);"><img class="size-20" src="/dist/assets/learn.svg" alt="">
+                <p class="text-center text-neutral-900 text-base font-medium  capitalize leading-normal ">أبدا بتعلم المستوى المناسب فى اللغة الانجليزية   </p>
+              </div>
+              <div class="swiper-slide  bg-white rounded-3xl  border  border-gray-100    !grid justify-items-center gap-3 p-3" style="box-shadow: 0px 2px 25px 0px rgba(43, 109, 245, 0.10);"><img class="size-20" src="/dist/assets/time.svg" alt="">
+                <p class="text-center text-neutral-900 text-base font-medium  capitalize leading-normal ">اختار الوقت المناسب للدراسة </p>
+              </div>
+              <div class="swiper-slide  bg-white rounded-3xl  border  border-gray-100    !grid justify-items-center gap-3 p-3" style="box-shadow: 0px 2px 25px 0px rgba(43, 109, 245, 0.10);"><img class="size-20" src="/dist/assets/level.svg" alt="">
+                <p class="text-center text-neutral-900 text-base font-medium  capitalize leading-normal ">احصل على شهادة معتمدة من وزارة التعليم السعودى </p>
+              </div>
+            </div>
+            <div class="swiper-pagination"></div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <section class="container">
+      <div class="h_primary">استكشف الدورات التدريبية</div>
+      <div class="swiper courses_swiper">
+        <div class="swiper-wrapper mb-12">
+          <div class="swiper-slide"> 
+            <div class="bg-white shadow p-4  grid gap-4 grid-rows-5  rounded-[32px]" style="box-shadow: 0px 2px 25px 0px rgba(43, 109, 245, 0.10);"><a class="row-span-3" href=""><img class="rounded-3xl   h-full w-full" src="https://via.placeholder.com/359x258"></a>
+              <div class="row-span-2 grid gap-4">
+                <div class="text-neutral-900 font-bold capitalize leading-snug text-[22px] ">900 ر.س</div>
+                <div class="text-neutral-900 text-base font-medium capitalize leading-none">برنامج اللغة الإنجليزية - عرض مستوى واحد</div>
+                <div class="text-neutral-500 text-sm font-normal leading-relaxed  ">هو ببساطة نص شكلي (بمعنى أن الغاية هي الشكل وليس المحتوى) ويُستخدم في صناعات.</div>
+                <div class="cent"> 
+                  <button class="btn_sec  "><span>أضف الى السلة</span><img src="/dist/assets/cart-in-card.svg" alt=""></button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide"> 
+            <div class="bg-white shadow p-4  grid gap-4 grid-rows-5  rounded-[32px]" style="box-shadow: 0px 2px 25px 0px rgba(43, 109, 245, 0.10);"><a class="row-span-3" href=""><img class="rounded-3xl   h-full w-full" src="https://via.placeholder.com/359x258"></a>
+              <div class="row-span-2 grid gap-4">
+                <div class="text-neutral-900 font-bold capitalize leading-snug text-[22px] ">900 ر.س</div>
+                <div class="text-neutral-900 text-base font-medium capitalize leading-none">برنامج اللغة الإنجليزية - عرض مستوى واحد</div>
+                <div class="text-neutral-500 text-sm font-normal leading-relaxed  ">هو ببساطة نص شكلي (بمعنى أن الغاية هي الشكل وليس المحتوى) ويُستخدم في صناعات.</div>
+                <div class="cent"> 
+                  <button class="btn_sec  "><span>أضف الى السلة</span><img src="/dist/assets/cart-in-card.svg" alt=""></button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide"> 
+            <div class="bg-white shadow p-4  grid gap-4 grid-rows-5  rounded-[32px]" style="box-shadow: 0px 2px 25px 0px rgba(43, 109, 245, 0.10);"><a class="row-span-3" href=""><img class="rounded-3xl   h-full w-full" src="https://via.placeholder.com/359x258"></a>
+              <div class="row-span-2 grid gap-4">
+                <div class="text-neutral-900 font-bold capitalize leading-snug text-[22px] ">900 ر.س</div>
+                <div class="text-neutral-900 text-base font-medium capitalize leading-none">برنامج اللغة الإنجليزية - عرض مستوى واحد</div>
+                <div class="text-neutral-500 text-sm font-normal leading-relaxed  ">هو ببساطة نص شكلي (بمعنى أن الغاية هي الشكل وليس المحتوى) ويُستخدم في صناعات.</div>
+                <div class="cent"> 
+                  <button class="btn_sec  "><span>أضف الى السلة</span><img src="/dist/assets/cart-in-card.svg" alt=""></button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide"> 
+            <div class="bg-white shadow p-4  grid gap-4 grid-rows-5  rounded-[32px]" style="box-shadow: 0px 2px 25px 0px rgba(43, 109, 245, 0.10);"><a class="row-span-3" href=""><img class="rounded-3xl   h-full w-full" src="https://via.placeholder.com/359x258"></a>
+              <div class="row-span-2 grid gap-4">
+                <div class="text-neutral-900 font-bold capitalize leading-snug text-[22px] ">900 ر.س</div>
+                <div class="text-neutral-900 text-base font-medium capitalize leading-none">برنامج اللغة الإنجليزية - عرض مستوى واحد</div>
+                <div class="text-neutral-500 text-sm font-normal leading-relaxed  ">هو ببساطة نص شكلي (بمعنى أن الغاية هي الشكل وليس المحتوى) ويُستخدم في صناعات.</div>
+                <div class="cent"> 
+                  <button class="btn_sec  "><span>أضف الى السلة</span><img src="/dist/assets/cart-in-card.svg" alt=""></button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide"> 
+            <div class="bg-white shadow p-4  grid gap-4 grid-rows-5  rounded-[32px]" style="box-shadow: 0px 2px 25px 0px rgba(43, 109, 245, 0.10);"><a class="row-span-3" href=""><img class="rounded-3xl   h-full w-full" src="https://via.placeholder.com/359x258"></a>
+              <div class="row-span-2 grid gap-4">
+                <div class="text-neutral-900 font-bold capitalize leading-snug text-[22px] ">900 ر.س</div>
+                <div class="text-neutral-900 text-base font-medium capitalize leading-none">برنامج اللغة الإنجليزية - عرض مستوى واحد</div>
+                <div class="text-neutral-500 text-sm font-normal leading-relaxed  ">هو ببساطة نص شكلي (بمعنى أن الغاية هي الشكل وليس المحتوى) ويُستخدم في صناعات.</div>
+                <div class="cent"> 
+                  <button class="btn_sec  "><span>أضف الى السلة</span><img src="/dist/assets/cart-in-card.svg" alt=""></button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide"> 
+            <div class="bg-white shadow p-4  grid gap-4 grid-rows-5  rounded-[32px]" style="box-shadow: 0px 2px 25px 0px rgba(43, 109, 245, 0.10);"><a class="row-span-3" href=""><img class="rounded-3xl   h-full w-full" src="https://via.placeholder.com/359x258"></a>
+              <div class="row-span-2 grid gap-4">
+                <div class="text-neutral-900 font-bold capitalize leading-snug text-[22px] ">900 ر.س</div>
+                <div class="text-neutral-900 text-base font-medium capitalize leading-none">برنامج اللغة الإنجليزية - عرض مستوى واحد</div>
+                <div class="text-neutral-500 text-sm font-normal leading-relaxed  ">هو ببساطة نص شكلي (بمعنى أن الغاية هي الشكل وليس المحتوى) ويُستخدم في صناعات.</div>
+                <div class="cent"> 
+                  <button class="btn_sec  "><span>أضف الى السلة</span><img src="/dist/assets/cart-in-card.svg" alt=""></button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="swiper-pagination"></div>
+      </div>
+    </section>
+    <section class="bg-sec">
+      <div class="grid gap-8 lg:grid-cols-5 ">
+        <div class="mask overflow-clip maxlg:hidden lg:col-span-3 h-full"><img class=" h-full " src="/dist/assets/sila-mid-panner.webp" alt=""></div>
+        <div class="flex flex-col justify-center gap-4 items-center py-8 px-4 lg:col-span-2 ">
+          <h1 class=" text-2xl md:text-3xl lg:text-4xl  font-extrabold text-white leading-10  lg:leading-[65px] text_shadow text-center">تحقق من مستواك في اللغة الانجليزية  <span class="text-primary">مجانا</span></h1>
+          <div class="text-primary font-semibold xl:mt-8 w-2/3 mx-auto  lg:text-2xl md:text-xl text-lg text-center">ادخل البيانات واكمل الاختبار المجانى</div>
+          <form class="grid gap-4 md:w-2/3 mx-auto" action="submit">
+            <input id="yourName" type="text" name="" placeholder=" الاسم بالكامل">
+            <input id="yoyrEmail" type="email" name="" placeholder=" البريد الالكترونى">
+            <input id="yourNumber" type="tel" name="" placeholder="رقم الجوال " dir="rtl">
+            <div class="cent">
+              <button class="btn_primary">أبدا الاختبار المجانى</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+    <section class="container">
+      <div class="h_primary">أفضل حل لتعلم ، بأفضل الأسعار.</div>
+      <div class="cent gap-8 flex-wrap">
+        <div class="p-8 border border-neutral-200 cent_col gap-6  min-w-[280px]  rounded-[32px]  hover:bg-primary group hover:-translate-y-6 duration-300 hover:duration-1000">
+          <div class="self-stretch flex-col justify-start items-center gap-6 flex">
+            <div class="text-neutral-900 text-lg font-medium  leading-[18px] group-hover:text-neutral-100">الباقة الذهبية (3 دورات)</div>
+            <div class="flex-col justify-start items-center gap-6 flex">
+              <div class="text-right text-amber-400 font-bold leading-7 text-[28px] ">1600.00 ر.س</div>
+              <div class="flex-col justify-start items-end gap-6 flex">
+                <div class="bg-neutral-200  h-0.5"></div>
+                <div class="flex-col justify-start items-start gap-6 flex text-neutral-500 leading-none">
+                  <div class="justify-center items-center flex gap-2.5 group-hover:text-neutral-100"><img class="size-6" src="/dist/assets/true.svg" alt="">
+                    <p>دورات  خاصة و جماعية</p>
+                  </div>
+                  <div class="justify-center items-center flex gap-2.5 group-hover:text-neutral-100"><img class="size-6" src="/dist/assets/true.svg" alt="">
+                    <p>جلسات يومية</p>
+                  </div>
+                  <div class="justify-center items-center flex gap-2.5 group-hover:text-neutral-100"><img class="size-6" src="/dist/assets/true.svg" alt="">
+                    <p>تسجيل المحاضرات</p>
+                  </div>
+                </div>
+              </div>
+              <button class="btn_sec"> <span class="font-bold"> اضف الي السلة</span></button>
+            </div>
+          </div>
+        </div>
+        <div class="p-8 border border-neutral-200 cent_col gap-6  min-w-[280px]  rounded-[32px]  hover:bg-primary group hover:-translate-y-6 duration-300 hover:duration-1000">
+          <div class="self-stretch flex-col justify-start items-center gap-6 flex">
+            <div class="text-neutral-900 text-lg font-medium  leading-[18px] group-hover:text-neutral-100">الباقة الذهبية (3 دورات)</div>
+            <div class="flex-col justify-start items-center gap-6 flex">
+              <div class="text-right text-amber-400 font-bold leading-7 text-[28px] ">1600.00 ر.س</div>
+              <div class="flex-col justify-start items-end gap-6 flex">
+                <div class="bg-neutral-200  h-0.5"></div>
+                <div class="flex-col justify-start items-start gap-6 flex text-neutral-500 leading-none">
+                  <div class="justify-center items-center flex gap-2.5 group-hover:text-neutral-100"><img class="size-6" src="/dist/assets/true.svg" alt="">
+                    <p>دورات  خاصة و جماعية</p>
+                  </div>
+                  <div class="justify-center items-center flex gap-2.5 group-hover:text-neutral-100"><img class="size-6" src="/dist/assets/true.svg" alt="">
+                    <p>جلسات يومية</p>
+                  </div>
+                  <div class="justify-center items-center flex gap-2.5 group-hover:text-neutral-100"><img class="size-6" src="/dist/assets/true.svg" alt="">
+                    <p>تسجيل المحاضرات</p>
+                  </div>
+                </div>
+              </div>
+              <button class="btn_sec"> <span class="font-bold"> اضف الي السلة</span></button>
+            </div>
+          </div>
+        </div>
+        <div class="p-8 border border-neutral-200 cent_col gap-6  min-w-[280px]  rounded-[32px]  hover:bg-primary group hover:-translate-y-6 duration-300 hover:duration-1000">
+          <div class="self-stretch flex-col justify-start items-center gap-6 flex">
+            <div class="text-neutral-900 text-lg font-medium  leading-[18px] group-hover:text-neutral-100">الباقة الذهبية (3 دورات)</div>
+            <div class="flex-col justify-start items-center gap-6 flex">
+              <div class="text-right text-amber-400 font-bold leading-7 text-[28px] ">1600.00 ر.س</div>
+              <div class="flex-col justify-start items-end gap-6 flex">
+                <div class="bg-neutral-200  h-0.5"></div>
+                <div class="flex-col justify-start items-start gap-6 flex text-neutral-500 leading-none">
+                  <div class="justify-center items-center flex gap-2.5 group-hover:text-neutral-100"><img class="size-6" src="/dist/assets/true.svg" alt="">
+                    <p>دورات  خاصة و جماعية</p>
+                  </div>
+                  <div class="justify-center items-center flex gap-2.5 group-hover:text-neutral-100"><img class="size-6" src="/dist/assets/true.svg" alt="">
+                    <p>جلسات يومية</p>
+                  </div>
+                  <div class="justify-center items-center flex gap-2.5 group-hover:text-neutral-100"><img class="size-6" src="/dist/assets/true.svg" alt="">
+                    <p>تسجيل المحاضرات</p>
+                  </div>
+                </div>
+              </div>
+              <button class="btn_sec"> <span class="font-bold"> اضف الي السلة</span></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="bg-[#F7F8FA] py-16">
+      <div class="container grid gap-12 lg:grid-cols-5">
+        <div class="flex-col flex gap-8 px-4 lg:max-w-[640px] lg:col-span-3">
+          <div class="text-neutral-900 font-bold  h_primary maxlg:text-center">سجل حسابك واحصل على وصول مجاني إلى 5000 دورة عبر الإنترنت.</div>
+          <div class="text-neutral-500 font-normal -mt-12 lg:text-xl leading-8 lg:leading-[35px] maxlg:text-center">في عصر التكنولوجيا الحديثة، أصبح وصول الطلاب إلى المعرفة والتعليم أسهل وأكثر تنوعًا من أي وقت مضى. تقدم الدورات عبر الإنترنت فرصة رائعة للطلاب لاكتساب المهارات لتعميق معرفتهم في مجالات معينة، والابتكار، وتطوير مهارات جديدة طوال حياتهم</div>
+          <div class="flex maxlg:justify-center ">
+            <button class="btn_primary  sm:w-1/3">تواصل معنا</button>
+          </div>
+        </div>
+        <div class=" col-span-2 maxlg:hidden"><img class=" h-full w-full opacity-75 bg-neutral-900 rounded-[32px]" src="" alt=""></div>
+      </div>
+    </section>
+    <footer class="bg-[#121212]">
+      <div class="grid grid-cols-10 gap-x-8 container gap-y-16 py-8  maxsm:justify-items-center text-neutral-400 text-sm md:text-base font-normal maxsm:gap-x-4">
+        <div class="col-span-3 grid gap-4 maxlg:col-span-6 maxsm:col-span-full maxsm:justify-items-center">
+          <h6 class="text-white text-xl font-medium capitalize maxmd:text-base">ابقى على تواصل</h6>
+          <p class="flex items-center gap-2"><img class="size-6" src="/dist/assets/phone.svg" alt=""><span>+966122724777</span></p>
+          <p class="flex items-center gap-2"><img class="size-6" src="/dist/assets/email.svg" alt=""><span>info@silavisions.academy</span></p>
+          <p class="flex items-center gap-4"><a href=""> <img class="size-6" src="/dist/assets/facebook.svg" alt=""></a><a href=""> <img class="size-6" src="/dist/assets/youtube.svg" alt=""></a><a href=""> <img class="size-6" src="/dist/assets/xtwitter.svg" alt=""></a><a href=""> <img class="size-6" src="/dist/assets/linked.svg" alt=""></a><a href=""> <img class="size-6" src="/dist/assets/insta.svg" alt=""></a></p>
+        </div>
+        <div class="grid gap-4 col-span-2 maxlg:col-span-4 maxsm:col-span-5">
+          <h6 class="text-white text-xl font-medium capitalize maxmd:text-base">الصفحات</h6><a href="">الرئيسية</a><a href="">الدورات التدريبية</a><a href="">آخر العروض</a><a href="">اختبار تحديد المستوى</a><a href="">تواصل معنا</a>
+        </div>
+        <div class="grid gap-4 col-span-2 maxlg:col-span-4 maxsm:-order-none maxlg:order-last maxsm:col-span-5">
+          <h6 class="text-white text-xl font-medium capitalize maxmd:text-base"> سياسات واحكام</h6><a href="">الشروط والاحكام</a><a href="">سياسة النزاهة الأكاديمية</a><a href="">الملكية الفكرية</a><a href="">سياسة الحضور</a>
+        </div>
+        <div class="col-span-3 maxlg:col-span-6 maxsm:col-span-full ">
+          <h6 class="text-white text-xl font-medium capitalize mb-4 maxmd:text-base"> اشترك في النشرة الإخبارية لدينا</h6>
+          <input class="maxsm:w-full" type="email" name="" placeholder="أدخل عنوان بريدك الإلكتروني">
+        </div>
+      </div>
+      <div class=" h-0.5 bg-neutral-200"></div>
+      <div class="text-center py-6 text-neutral-200 md:text-lg   capitalize leading-[26px]">Copyright©2024 &nbsp; <a class="text-white font-semibold tracking-wider maxmd:text-lg" href=""> silavisions.academy</a></div>
+    </footer>
+    <script src="../js/swipers.js"> </script>
+    <script src="../js/main.js"> </script><script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/datepicker.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.js"></script>
+  </body>
+</html>

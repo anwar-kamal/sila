@@ -1,0 +1,22 @@
+include ./mixins/page-nav-panner.pug 
+
+doctype html
+html(lang="ar" dir="rtl" x-data="{ lang: localStorage.getItem('lang') || 'ar', dir: localStorage.getItem('dir') || 'rtl', toggleDirLang() { this.lang = this.lang === 'en' ? 'ar' : 'en'; this.dir = this.dir === 'ltr' ? 'rtl' : 'ltr'; this.updateAttributes(); window.location.reload(); }, setToLTR() { this.lang = 'en'; this.dir = 'ltr'; this.updateAttributes(); window.location.reload(); }, setToRTL() { this.lang = 'ar'; this.dir = 'rtl'; this.updateAttributes(); window.location.reload(); }, updateAttributes() { localStorage.setItem('dir', this.dir); localStorage.setItem('lang', this.lang); document.documentElement.dir = this.dir; document.documentElement.lang = this.lang; }}", x-init="()=> { document.documentElement.lang = lang; document.documentElement.dir = dir; }")
+	include ./components/head
+	body( x-data="{sideBar:false}")
+		include ./components/header
+		+page-nav-panner('اختبار تحديد المستوى')
+		main.container.grid.gap-16.py-24
+			.bg-gray-50.border.border-neutral-200.grid.content-between.gap-8.py-6.px-4(class='mx-auto w-full max-w-[991px]  rounded-[32px] min-h-[583px] ')
+				.bg-amber-400.rounded-2xl.justify-center.items-center.inline-flex(class='w-[229px] h-[65px] gap-1.5 mx-auto')
+					.text-center
+						span(class="text-neutral-900 text-base font-normal  capitalize leading-none") Time:
+						span(class="text-neutral-900 text-base font-semibold capitalize leading-none")  28M 41S
+					img(src="/dist/assets/time-count.svg", alt="" class=" size-12")
+				div
+				.cent_bet.gap-4
+					button.btn_primary  Next
+					button.btn_exit  Finish exam
+
+		include ./components/footer
+		include ./components/scripts
