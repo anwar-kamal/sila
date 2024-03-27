@@ -1,0 +1,16 @@
+include ./mixins/page-nav-panner.pug 
+
+doctype html
+html(lang="ar" dir="rtl" x-data="{ lang: localStorage.getItem('lang') || 'ar', dir: localStorage.getItem('dir') || 'rtl', toggleDirLang() { this.lang = this.lang === 'en' ? 'ar' : 'en'; this.dir = this.dir === 'ltr' ? 'rtl' : 'ltr'; this.updateAttributes(); window.location.reload(); }, setToLTR() { this.lang = 'en'; this.dir = 'ltr'; this.updateAttributes(); window.location.reload(); }, setToRTL() { this.lang = 'ar'; this.dir = 'rtl'; this.updateAttributes(); window.location.reload(); }, updateAttributes() { localStorage.setItem('dir', this.dir); localStorage.setItem('lang', this.lang); document.documentElement.dir = this.dir; document.documentElement.lang = this.lang; }}", x-init="()=> { document.documentElement.lang = lang; document.documentElement.dir = dir; }")
+	include ./components/head
+	body( x-data="{sideBar:false}")
+		include ./components/header
+		+page-nav-panner('السلة')
+		main.container.my-24
+			.grid.gap-8.p-8(class="maxmd:p-4 mx-auto max-w-[991px] bg-gray-50 rounded-[32px] border border-neutral-200")
+				img(src="/dist/assets/empty-cart.png", alt="" class="max-w-[400px] mx-auto")
+				div( class="text-center text-neutral-800 md:text-xl font-semibold  capitalize " )  عربة التسوق فارغة. استمر في التسوق للعثور على الدورة التدريبية!
+				.cent 
+					button.btn_primary العودة الى التسوق
+		include ./components/footer
+		include ./components/scripts

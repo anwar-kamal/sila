@@ -1,0 +1,21 @@
+include ./mixins/page-nav-panner.pug 
+
+doctype html
+html(lang="ar" dir="rtl" x-data="{ lang: localStorage.getItem('lang') || 'ar', dir: localStorage.getItem('dir') || 'rtl', toggleDirLang() { this.lang = this.lang === 'en' ? 'ar' : 'en'; this.dir = this.dir === 'ltr' ? 'rtl' : 'ltr'; this.updateAttributes(); window.location.reload(); }, setToLTR() { this.lang = 'en'; this.dir = 'ltr'; this.updateAttributes(); window.location.reload(); }, setToRTL() { this.lang = 'ar'; this.dir = 'rtl'; this.updateAttributes(); window.location.reload(); }, updateAttributes() { localStorage.setItem('dir', this.dir); localStorage.setItem('lang', this.lang); document.documentElement.dir = this.dir; document.documentElement.lang = this.lang; }}", x-init="()=> { document.documentElement.lang = lang; document.documentElement.dir = dir; }")
+	include ./components/head
+	body( x-data="{sideBar:false}")
+		include ./components/header
+		+page-nav-panner('سياسة النزاهة الأكاديمية')
+		main.container.my-24
+			.grid.gap-8.p-8(class="maxmd:p-4  bg-gray-50 rounded-[32px] border border-neutral-200")
+				h2( class=" text-right text-neutral-900 text-2xl font-semibold capitalize leading-10")  وضعنا سياسة النزاهة في الأكاديمية حتى نضمن حق طلابنا في الحصول على تجربة علمية متميزة وفريدة من نوعها، ونحقق لهم الرقي والتقدم فى الحياه العلمية، وهذا من خلال عدة نقاط وهي:
+			
+				ul.grid.gap-4
+					each item in Array(5).fill()
+						li.flex.items-center.gap-2
+							img(src="/dist/assets/checked-task-primary.svg" alt="" class="size-6")
+							.text-right.text-neutral-500.text-base.font-normal(class="leading-[18px]") تقديم محتوى حصري خاص بالأكاديمية.
+	
+							
+		include ./components/footer
+		include ./components/scripts

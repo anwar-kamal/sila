@@ -1150,6 +1150,11 @@ input:checked + .toggle-bg {
   margin-right: auto;
 }
 
+.my-24 {
+  margin-top: 6rem;
+  margin-bottom: 6rem;
+}
+
 .-mb-48 {
   margin-bottom: -12rem;
 }
@@ -1226,6 +1231,10 @@ input:checked + .toggle-bg {
   display: none;
 }
 
+.aspect-\[5\/4\] {
+  aspect-ratio: 5/4;
+}
+
 .size-12 {
   width: 3rem;
   height: 3rem;
@@ -1241,9 +1250,19 @@ input:checked + .toggle-bg {
   height: 5rem;
 }
 
+.size-3 {
+  width: 0.75rem;
+  height: 0.75rem;
+}
+
 .size-6 {
   width: 1.5rem;
   height: 1.5rem;
+}
+
+.size-60 {
+  width: 15rem;
+  height: 15rem;
 }
 
 .size-8 {
@@ -1263,12 +1282,20 @@ input:checked + .toggle-bg {
   height: 3rem;
 }
 
+.h-28 {
+  height: 7rem;
+}
+
 .h-4 {
   height: 1rem;
 }
 
 .h-6 {
   height: 1.5rem;
+}
+
+.h-8 {
+  height: 2rem;
 }
 
 .h-9 {
@@ -1319,6 +1346,10 @@ input:checked + .toggle-bg {
   width: 229px;
 }
 
+.w-\[343px\] {
+  width: 343px;
+}
+
 .w-full {
   width: 100%;
 }
@@ -1335,12 +1366,36 @@ input:checked + .toggle-bg {
   max-width: 42rem;
 }
 
+.max-w-5 {
+  max-width: 1.25rem;
+}
+
+.max-w-\[110px\] {
+  max-width: 110px;
+}
+
 .max-w-\[132px\] {
   max-width: 132px;
 }
 
+.max-w-\[400px\] {
+  max-width: 400px;
+}
+
+.max-w-\[560px\] {
+  max-width: 560px;
+}
+
 .max-w-\[991px\] {
   max-width: 991px;
+}
+
+.max-w-12 {
+  max-width: 3rem;
+}
+
+.max-w-14 {
+  max-width: 3.5rem;
 }
 
 .flex-1 {
@@ -1353,6 +1408,10 @@ input:checked + .toggle-bg {
 
 .shrink-0 {
   flex-shrink: 0;
+}
+
+.flex-grow {
+  flex-grow: 1;
 }
 
 .-translate-x-full {
@@ -1477,6 +1536,10 @@ input:checked + .toggle-bg {
   justify-content: space-between;
 }
 
+.justify-items-end {
+  justify-items: end;
+}
+
 .justify-items-center {
   justify-items: center;
 }
@@ -1587,8 +1650,16 @@ input:checked + .toggle-bg {
   border-radius: 32px;
 }
 
+.rounded-\[50px\] {
+  border-radius: 50px;
+}
+
 .rounded-lg {
   border-radius: 0.5rem;
+}
+
+.rounded-xl {
+  border-radius: 0.75rem;
 }
 
 .rounded-e-lg {
@@ -1617,6 +1688,11 @@ input:checked + .toggle-bg {
 
 .border-0 {
   border-width: 0px;
+}
+
+.\!border-gray-100 {
+  --tw-border-opacity: 1 !important;
+  border-color: rgb(243 244 246 / var(--tw-border-opacity)) !important;
 }
 
 .border-blue-600 {
@@ -1715,6 +1791,10 @@ input:checked + .toggle-bg {
 
 .bg-white\/50 {
   background-color: rgb(255 255 255 / 0.5);
+}
+
+.bg-opacity-50 {
+  --tw-bg-opacity: 0.5;
 }
 
 .bg-opacity-85 {
@@ -1951,6 +2031,14 @@ input:checked + .toggle-bg {
   line-height: 1.375;
 }
 
+.leading-tight {
+  line-height: 1.25;
+}
+
+.leading-\[44px\] {
+  line-height: 44px;
+}
+
 .tracking-wider {
   letter-spacing: 0.05em;
 }
@@ -2000,6 +2088,11 @@ input:checked + .toggle-bg {
   color: rgb(64 64 64 / var(--tw-text-opacity));
 }
 
+.text-neutral-800 {
+  --tw-text-opacity: 1;
+  color: rgb(38 38 38 / var(--tw-text-opacity));
+}
+
 .text-neutral-900 {
   --tw-text-opacity: 1;
   color: rgb(23 23 23 / var(--tw-text-opacity));
@@ -2025,6 +2118,10 @@ input:checked + .toggle-bg {
 
 .opacity-100 {
   opacity: 1;
+}
+
+.opacity-60 {
+  opacity: 0.6;
 }
 
 .opacity-75 {
@@ -2327,6 +2424,23 @@ label {
 
 /*  */
 
+input[type='radio'] {
+  width: 1rem !important;
+  height: 1rem !important;
+  border-radius: 50% !important;
+  padding: 7.5px !important;
+  background-size: 1.25em !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  border: 2px solid var(--primary) !important;
+  cursor: pointer;
+}
+
+input[type='radio']:checked {
+  border-color: transparent;
+  background-color: var(--primary) !important;
+}
+
 .radio_btn {
   display: flex;
   justify-content: center;
@@ -2591,6 +2705,7 @@ tbody td {
   font-weight: 500;
   text-transform: capitalize;
   line-height: 18px;
+  letter-spacing: 0.025em;
   --tw-text-opacity: 1;
   color: rgb(76 0 91 / var(--tw-text-opacity));
   transition-duration: 300ms;
@@ -2598,6 +2713,20 @@ tbody td {
 
 .btn_sec:hover {
   background-image: linear-gradient(to bottom right, var(--tw-gradient-stops));
+}
+
+.btn_sec:disabled {
+  cursor: not-allowed;
+  --tw-border-opacity: 1;
+  border-color: rgb(212 212 212 / var(--tw-border-opacity));
+  --tw-bg-opacity: 1;
+  background-color: rgb(250 250 250 / var(--tw-bg-opacity));
+  --tw-text-opacity: 1;
+  color: rgb(212 212 212 / var(--tw-text-opacity));
+}
+
+.btn_sec:hover:disabled {
+  background-image: none;
 }
 
 @media (max-width: 767px) {
@@ -2941,6 +3070,10 @@ section {
     gap: 1.5rem;
   }
 
+  .md\:p-6 {
+    padding: 1.5rem;
+  }
+
   .md\:text-2xl {
     font-size: 1.5rem;
     line-height: 2rem;
@@ -3079,6 +3212,10 @@ section {
 }
 
 @media (max-width: 767px) {
+  .maxmd\:p-4 {
+    padding: 1rem;
+  }
+
   .maxmd\:text-base {
     font-size: 1rem;
     line-height: 1.5rem;

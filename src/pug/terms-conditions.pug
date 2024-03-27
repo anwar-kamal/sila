@@ -1,0 +1,35 @@
+include ./mixins/page-nav-panner.pug 
+
+doctype html
+html(lang="ar" dir="rtl" x-data="{ lang: localStorage.getItem('lang') || 'ar', dir: localStorage.getItem('dir') || 'rtl', toggleDirLang() { this.lang = this.lang === 'en' ? 'ar' : 'en'; this.dir = this.dir === 'ltr' ? 'rtl' : 'ltr'; this.updateAttributes(); window.location.reload(); }, setToLTR() { this.lang = 'en'; this.dir = 'ltr'; this.updateAttributes(); window.location.reload(); }, setToRTL() { this.lang = 'ar'; this.dir = 'rtl'; this.updateAttributes(); window.location.reload(); }, updateAttributes() { localStorage.setItem('dir', this.dir); localStorage.setItem('lang', this.lang); document.documentElement.dir = this.dir; document.documentElement.lang = this.lang; }}", x-init="()=> { document.documentElement.lang = lang; document.documentElement.dir = dir; }")
+	include ./components/head
+	body( x-data="{sideBar:false}")
+		include ./components/header
+		+page-nav-panner('الشروط والأحكام')
+		main.container.my-24
+			.grid.gap-8.p-8(class="maxmd:p-4  bg-gray-50 rounded-[32px] border border-neutral-200")
+				h2( class=" text-right text-neutral-900 text-2xl font-semibold capitalize leading-10") من أجل النظام والشفافية والحفاظ على حقوق كلًا من الطلاب والمدربين وأكاديمية Sila Vision Academy قمنا بوضع العديد من الشروط والأحكام وهي:
+				.h_sub_primary سياسات المحتوى: -
+				ul.grid.gap-4
+					each item in Array(5).fill()
+						li.flex.items-center.gap-2
+							img(src="/dist/assets/checked-task-primary.svg" alt="" class="size-6")
+							.text-right.text-neutral-500.text-base.font-normal(class="leading-[18px]") إتقان المهارات الأساسية الأربعة للاختبار (التحدث، الاستماع، القراءة والكتابة)
+				.h_sub_primary قواعد السلوك عبر الإنترنت : -
+				ul.grid.gap-4
+					each item in Array(5).fill()
+						li.flex.items-center.gap-2
+							img(src="/dist/assets/checked-task-primary.svg" alt="" class="size-6")
+							.text-right.text-neutral-500.text-base.font-normal(class="leading-[18px]") يكون الطالب مسئول تمامٌا عن استخدام الموقع بشكل يتوافق مع قيم ومبادئ الأكاديمية. عدم اسنخدام نفس الحساب لاكثر من شخص.
+
+				.h_sub_primary حسابات المستخدم والصلاحيات :
+				ul.grid.gap-4
+					each item in Array(5).fill()
+						li.flex.items-center.gap-2
+							img(src="/dist/assets/checked-task-primary.svg" alt="" class="size-6")
+							.text-right.text-neutral-500.text-base.font-normal(class="leading-[18px]") للاستخدام في حضور دوراتنا التدريبية، ويحظر على الطالب استخدام هذه البيانات مع طرف ثالث.
+
+
+							
+		include ./components/footer
+		include ./components/scripts

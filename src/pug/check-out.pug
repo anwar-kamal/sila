@@ -1,0 +1,53 @@
+include ./mixins/page-nav-panner.pug 
+
+doctype html
+html(lang="ar" dir="rtl" x-data="{ lang: localStorage.getItem('lang') || 'ar', dir: localStorage.getItem('dir') || 'rtl', toggleDirLang() { this.lang = this.lang === 'en' ? 'ar' : 'en'; this.dir = this.dir === 'ltr' ? 'rtl' : 'ltr'; this.updateAttributes(); window.location.reload(); }, setToLTR() { this.lang = 'en'; this.dir = 'ltr'; this.updateAttributes(); window.location.reload(); }, setToRTL() { this.lang = 'ar'; this.dir = 'rtl'; this.updateAttributes(); window.location.reload(); }, updateAttributes() { localStorage.setItem('dir', this.dir); localStorage.setItem('lang', this.lang); document.documentElement.dir = this.dir; document.documentElement.lang = this.lang; }}", x-init="()=> { document.documentElement.lang = lang; document.documentElement.dir = dir; }")
+	include ./components/head
+	body( x-data="{sideBar:false}")
+		include ./components/header
+		+page-nav-panner('الدفع')
+		main.container.my-24.grid.gap-8( class=" lg:grid-cols-3 md:grid-cols-2 ")
+			.grid.gap-4(class="p-4 md:p-6  bg-gray-50 rounded-[32px] border border-neutral-200 lg:col-span-2")
+				each item in Array(5).fill()
+					include ./components/product-cart-item
+			.self-start.grid.gap-8
+				.grid.gap-4(class="p-4 md:p-6   bg-gray-50 rounded-[32px] border border-neutral-200 self-start")
+					div(class="text-neutral-900 text-base font-semibold leading-none") ملخص طلبك
+					.cent_bet.gap-4
+						div( class="text-right text-neutral-500 text-base font-normal leading-none") اجمالى المنتجات
+						div( class="text-right text-neutral-900 text-lg font-bold capitalize leading-tight") 2
+
+					.cent_bet.gap-4
+						div( class="text-right text-neutral-500 text-base font-normal leading-none") السعر
+						div( class="text-right text-neutral-900 text-lg font-bold capitalize leading-tight") 1700 ر.س
+						
+					.cent_bet.gap-4
+						div( class="text-right text-neutral-500 text-base font-normal leading-none") قسيمة الخصم
+						div( class="text-right text-neutral-900 text-lg font-bold capitalize leading-tight") -
+
+					div( class="w-[343px] h-0.5 opacity-60 bg-neutral-200")
+
+					.cent_bet.gap-4
+						div( class="text-right text-neutral-500 text-base font-normal leading-none") الأجمالي
+						div( class="text-right text-neutral-900 text-lg font-bold capitalize leading-tight") 1700 ر.س
+						
+						//- payment method 
+				.grid.gap-4(class="p-4 md:p-6   bg-gray-50 rounded-[32px] border border-neutral-200 self-start")
+					div(class="text-neutral-900 text-base font-semibold leading-none") طرق الدفع
+					form.grid.grid-cols-2.gap-4
+						.flex.gap-1.items-center
+							input#1(type='radio' name='fav_language' value='1')
+							label(for='1') 
+								img(src="/dist/assets/master.svg", alt="" class="max-w-12")
+		
+						.flex.gap-1.items-center.justify-end
+							input#2(type='radio' name='fav_language' value='2')
+							label(for='2')
+								img(src="/dist/assets/mada.svg", alt="" class="max-w-14")
+
+			.cent(class=" lg:col-span-2 ")
+				button.btn_primary الذهاب الي صفحة الدفع
+				
+
+		include ./components/footer
+		include ./components/scripts

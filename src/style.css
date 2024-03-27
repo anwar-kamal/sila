@@ -126,6 +126,24 @@ label {
 
 /*  */
 
+input[type='radio'] {
+  width: 1rem !important;
+  height: 1rem !important;
+  border-radius: 50% !important;
+  padding: 7.5px !important;
+  background-size: 1.25em !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+
+  border: 2px solid var(--primary) !important;
+  cursor: pointer;
+}
+
+input[type='radio']:checked {
+  border-color: transparent;
+  background-color: var(--primary) !important;
+}
+
 .radio_btn {
   display: flex;
   justify-content: center;
@@ -245,7 +263,7 @@ tbody td {
   @apply text-center flex justify-center items-center  border-primary gap-2 text-white text-lg font-medium  capitalize leading-[18px] h-12 whitespace-nowrap px-6 rounded-2xl bg-primary duration-300  from-primary to-[#8f0ea8] hover:bg-gradient-to-tl p-2.5 maxmd:h-10 maxmd:px-5 maxmd:text-base;
 }
 .btn_sec {
-  @apply rounded-2xl border border-primary  justify-center items-center flex text-center text-primary text-lg font-medium capitalize leading-[18px] h-12 gap-2 whitespace-nowrap px-6 p-2.5 bg-white hover:bg-gradient-to-br from-[#fce8ff] duration-300 maxmd:h-10 maxmd:px-5 maxmd:text-base;
+  @apply rounded-2xl border border-primary  justify-center items-center flex tracking-wide text-center text-primary text-lg font-medium capitalize leading-[18px] h-12 gap-2 whitespace-nowrap px-6 p-2.5 bg-white hover:bg-gradient-to-br from-[#fce8ff] duration-300 maxmd:h-10 maxmd:px-5 maxmd:text-base disabled:border-neutral-300 disabled:bg-neutral-50 disabled:text-neutral-300 disabled:hover:bg-none disabled:cursor-not-allowed;
 }
 .btn_exit {
   @apply bg-red-700 rounded-2xl border   justify-center items-center flex text-center  text-lg font-medium capitalize leading-[18px] h-12 gap-2 whitespace-nowrap px-6 p-2.5  hover:bg-gradient-to-br from-red-600 to-red-800 duration-300 text-white maxmd:h-10 maxmd:px-5 maxmd:text-base  border-red-700;
