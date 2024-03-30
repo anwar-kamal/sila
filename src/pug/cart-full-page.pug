@@ -1,9 +1,126 @@
 include ./mixins/page-nav-panner.pug 
+include ./mixins/modal.pug 
 
 doctype html
 html(lang="ar" dir="rtl" x-data="{ lang: localStorage.getItem('lang') || 'ar', dir: localStorage.getItem('dir') || 'rtl', toggleDirLang() { this.lang = this.lang === 'en' ? 'ar' : 'en'; this.dir = this.dir === 'ltr' ? 'rtl' : 'ltr'; this.updateAttributes(); window.location.reload(); }, setToLTR() { this.lang = 'en'; this.dir = 'ltr'; this.updateAttributes(); window.location.reload(); }, setToRTL() { this.lang = 'ar'; this.dir = 'rtl'; this.updateAttributes(); window.location.reload(); }, updateAttributes() { localStorage.setItem('dir', this.dir); localStorage.setItem('lang', this.lang); document.documentElement.dir = this.dir; document.documentElement.lang = this.lang; }}", x-init="()=> { document.documentElement.lang = lang; document.documentElement.dir = dir; }")
 	include ./components/head
-	body( x-data="{sideBar:false}")
+	body( x-data="{sideBar:false,rapid:false,payment:false,type:false}")
+
+		div(x-show="type" :class="type ? '!block' : '' "  class=" hidden"  x-data="{tab:'tab1'}")
+			+modal()
+				+slot('x')
+					.cent_bet
+						div
+						button(class="fa-solid fa-x  text-primary" @click="type = false")
+				+slot('body')
+					.grid.gap-4.justify-items-center
+						img(src="/dist/assets/type-login.png", alt="" class=" size-60")
+						span اختر طريقة التسجيل لتأكيد اتمام الطلب
+						.grid.grid-cols-2.gap-4
+							button.btn_sec(@click="type = false ;payment = true") تسجيل الدخول
+							button.btn_primary(@click="type = false ;rapid = true")  الدفع السريع
+
+
+		div(x-show="type" :class="rapid? '!block' : '' "  class=" hidden"  x-data="{tab:'tab1'}")
+			+modal()
+				+slot('x')
+					.cent_bet
+						div الدفع السريع
+						button(class="fa-solid fa-x  text-primary" @click="rapid = false")
+
+				+slot('body')
+					.grid.gap-4
+						.flex.flex-col.gap-2
+							label(for="name") الاسم باللغة العربية 
+							input(type="text", name="")
+						.flex.flex-col.gap-2
+							label(for="name")  رقم الجوال(*) مثل : 05xxxxxxxx
+							input(type="tel", name="")
+						select(name="") 
+							option(value="" disabled selected  )  قم باختيار الجنسيه
+							option(value="") سعودي
+							option(value="") مصري
+					
+						.flex.gap-1.items-center
+							input(type="checkbox", name=" remember")
+							label(for="remember")  أوافق على
+							a.text-sky-600(href="")  سياسة الشروط والأحكام
+					
+						
+						button.btn_primary  تأكيد 
+
+		div(x-show="payment" :class="payment ? '!block' : '' "  class=" hidden"  x-data="{tab:'tab1'}")
+			+modal()
+				+slot('x')
+					.cent_bet
+						div
+						button(class="fa-solid fa-x  text-primary" @click="payment = false")
+				+slot('body')
+
+					.grid.gap-4.justify-items-center.grid-cols-2.border.rounded-xl.overflow-hidden
+						button.w-full.p-2(@click="tab='tab1'" :class="tab=='tab1' ? ' bg-primary text-white' : '' ") تسجيل الدخول
+						button.w-full.p-2(@click="tab='tab2'"  :class="tab=='tab2' ? ' bg-primary text-white' :'' ") سجل بياناتك
+
+					.grid.gap-4(x-show="tab==='tab1'")
+						.flex.flex-col.gap-2
+							label(for="name") اسم المستخدم او البريد الالكترونى 
+							input(type="text", name="")
+						.flex.flex-col.gap-2
+							label(for="name") االباسورد
+							input(type="password", name="")
+						
+						.flex.justify-between.gap-2
+							.flex.gap-1.items-center
+								input(type="checkbox", name=" remember")
+								label(for="remember") تذكرنى
+							a.text-sky-600(href="") نسيت كلمة المرور؟ 
+						
+						button.btn_primary تسجيل الدخول 
+					
+					.grid.gap-4(x-show="tab==='tab2'")
+						.flex.flex-col.gap-2
+							label(for="name") الاسم 
+							input(type="text", name="")
+
+						.flex.flex-col.gap-2
+							label(for="name")  الدولة
+							select(name="") 
+								option(value="")  سعودي
+								option(value="") مصري
+								option(value="")  اماراتي
+
+						.flex.flex-col.gap-2
+							label(for="tel") رقم الجوال*
+							input(type="tel", name="")
+
+						.flex.flex-col.gap-2
+							label(for="name") اسم المستخدم 
+							input(type="text", name="")
+
+
+						.flex.flex-col.gap-2
+							label(for="name") البريد الالكترونى*
+							input(type="email", name="")
+
+						.flex.flex-col.gap-2.col-span-full
+							label(for="message") رقم الجوال*
+							input(type="tel", name="")
+
+
+						.flex.flex-col.gap-2.col-span-full
+							label(for="message") كلمة المرور
+							input(type="password", name="")
+
+
+						.flex.flex-col.gap-2.col-span-full
+							label(for="message")  إعادة كلمة المرور
+							input(type="password", name="")
+
+						button.btn_primary.w-full(onclick="history.back()")  انشاء حساب
+
+
+
+
 		include ./components/header
 		+page-nav-panner('السلة')
 		main.container.my-24.grid.gap-8( class=" lg:grid-cols-3 md:grid-cols-2 ")
@@ -36,7 +153,7 @@ html(lang="ar" dir="rtl" x-data="{ lang: localStorage.getItem('lang') || 'ar', d
 					
 			.cent_bet.gap-4(class="  lg:col-span-2 ")
 				button.btn_sec  العودة الى التسوق
-				button.btn_primary الدفع
+				button.btn_primary(@click="type = true") الدفع
 
 		include ./components/footer
 		include ./components/scripts

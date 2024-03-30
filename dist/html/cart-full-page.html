@@ -11,7 +11,129 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
   </head>
-  <body x-data="{sideBar:false}">
+  <body x-data="{sideBar:false,rapid:false,payment:false,type:false}">
+    <div class=" hidden" x-show="type" :class="type ? '!block' : '' " x-data="{tab:'tab1'}">
+      <div class="fixed inset-0 bg-black bg-opacity-50 p-4 cent z-50 overflow-y-auto">
+        <div class="bg-white rounded-2xl relative p-8 grid gap-6 max-w-[560px] w-full" role="document">
+      <div class="cent_bet">
+        <div></div>
+        <button class="fa-solid fa-x  text-primary" @click="type = false"></button>
+      </div>
+          <div class="grid gap-6">
+      <div class="grid gap-4 justify-items-center"><img class=" size-60" src="/dist/assets/type-login.png" alt=""><span>اختر طريقة التسجيل لتأكيد اتمام الطلب</span>
+        <div class="grid grid-cols-2 gap-4">
+          <button class="btn_sec" @click="type = false ;payment = true">تسجيل الدخول</button>
+          <button class="btn_primary" @click="type = false ;rapid = true"> الدفع السريع</button>
+        </div>
+      </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class=" hidden" x-show="type" :class="rapid? '!block' : '' " x-data="{tab:'tab1'}">
+      <div class="fixed inset-0 bg-black bg-opacity-50 p-4 cent z-50 overflow-y-auto">
+        <div class="bg-white rounded-2xl relative p-8 grid gap-6 max-w-[560px] w-full" role="document">
+      <div class="cent_bet">
+        <div>الدفع السريع</div>
+        <button class="fa-solid fa-x  text-primary" @click="rapid = false"></button>
+      </div>
+          <div class="grid gap-6">
+      <div class="grid gap-4">
+        <div class="flex flex-col gap-2">
+          <label for="name">الاسم باللغة العربية </label>
+          <input type="text" name="">
+        </div>
+        <div class="flex flex-col gap-2">
+          <label for="name"> رقم الجوال(*) مثل : 05xxxxxxxx</label>
+          <input type="tel" name="">
+        </div>
+        <select name=""> 
+          <option value="" disabled selected> قم باختيار الجنسيه</option>
+          <option value="">سعودي</option>
+          <option value="">مصري</option>
+        </select>
+        <div class="flex gap-1 items-center">
+          <input type="checkbox" name=" remember">
+          <label for="remember"> أوافق على</label><a class="text-sky-600" href=""> سياسة الشروط والأحكام</a>
+        </div>
+        <button class="btn_primary"> تأكيد </button>
+      </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class=" hidden" x-show="payment" :class="payment ? '!block' : '' " x-data="{tab:'tab1'}">
+      <div class="fixed inset-0 bg-black bg-opacity-50 p-4 cent z-50 overflow-y-auto">
+        <div class="bg-white rounded-2xl relative p-8 grid gap-6 max-w-[560px] w-full" role="document">
+      <div class="cent_bet">
+        <div></div>
+        <button class="fa-solid fa-x  text-primary" @click="payment = false"></button>
+      </div>
+          <div class="grid gap-6">
+      <div class="grid gap-4 justify-items-center grid-cols-2 border rounded-xl overflow-hidden">
+        <button class="w-full p-2" @click="tab='tab1'" :class="tab=='tab1' ? ' bg-primary text-white' : '' ">تسجيل الدخول</button>
+        <button class="w-full p-2" @click="tab='tab2'" :class="tab=='tab2' ? ' bg-primary text-white' :'' ">سجل بياناتك</button>
+      </div>
+      <div class="grid gap-4" x-show="tab==='tab1'">
+        <div class="flex flex-col gap-2">
+          <label for="name">اسم المستخدم او البريد الالكترونى </label>
+          <input type="text" name="">
+        </div>
+        <div class="flex flex-col gap-2">
+          <label for="name">االباسورد</label>
+          <input type="password" name="">
+        </div>
+        <div class="flex justify-between gap-2">
+          <div class="flex gap-1 items-center">
+            <input type="checkbox" name=" remember">
+            <label for="remember">تذكرنى</label>
+          </div><a class="text-sky-600" href="">نسيت كلمة المرور؟ </a>
+        </div>
+        <button class="btn_primary">تسجيل الدخول </button>
+      </div>
+      <div class="grid gap-4" x-show="tab==='tab2'">
+        <div class="flex flex-col gap-2">
+          <label for="name">الاسم </label>
+          <input type="text" name="">
+        </div>
+        <div class="flex flex-col gap-2">
+          <label for="name"> الدولة</label>
+          <select name=""> 
+            <option value=""> سعودي</option>
+            <option value="">مصري</option>
+            <option value=""> اماراتي</option>
+          </select>
+        </div>
+        <div class="flex flex-col gap-2">
+          <label for="tel">رقم الجوال*</label>
+          <input type="tel" name="">
+        </div>
+        <div class="flex flex-col gap-2">
+          <label for="name">اسم المستخدم </label>
+          <input type="text" name="">
+        </div>
+        <div class="flex flex-col gap-2">
+          <label for="name">البريد الالكترونى*</label>
+          <input type="email" name="">
+        </div>
+        <div class="flex flex-col gap-2 col-span-full">
+          <label for="message">رقم الجوال*</label>
+          <input type="tel" name="">
+        </div>
+        <div class="flex flex-col gap-2 col-span-full">
+          <label for="message">كلمة المرور</label>
+          <input type="password" name="">
+        </div>
+        <div class="flex flex-col gap-2 col-span-full">
+          <label for="message"> إعادة كلمة المرور</label>
+          <input type="password" name="">
+        </div>
+        <button class="btn_primary w-full" onclick="history.back()"> انشاء حساب</button>
+      </div>
+          </div>
+        </div>
+      </div>
+    </div>
     <header class="bg-white">
       <div class="container cent_bet py-4"><img class="max-w-[132px] " src="/dist/assets/logo.svg" alt="">
         <nav class="cent maxlg:hidden xl:gap-6 gap-4 "><a class="nav_link nav_link_dash" href="">الرئيسية</a><a class="nav_link nav_link_dash" href=""> الدورات التدريبية</a><a class="nav_link nav_link_dash" href="">آخر العروض</a><a class="nav_link nav_link_dash" href=""> اختبار تحديد المستوى</a><a class="nav_link nav_link_dash" href="">تواصل معنا</a></nav>
@@ -145,7 +267,7 @@
       </div>
       <div class="cent_bet gap-4   lg:col-span-2 ">
         <button class="btn_sec"> العودة الى التسوق</button>
-        <button class="btn_primary">الدفع</button>
+        <button class="btn_primary" @click="type = true">الدفع</button>
       </div>
     </main>
     <footer class="bg-[#121212]">
